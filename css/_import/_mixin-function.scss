@@ -1,0 +1,169 @@
+// メディアクエリー
+$layout-width-inner: 1086px;
+// ブレークポイント
+$breakpoints: (
+     "xs": "screen and (max-width: 320px)",
+     "sp": "screen and (max-width: 767px)",
+    "tab": "screen and (max-width: #{$layout-width-inner - 1px})",
+     "pc": "screen and (min-width: #{$layout-width-inner})",
+     "xl": "screen and (min-width: 1366px)",
+);
+// PC → インナーの幅まで
+// タブレット → インナーの幅からiPad（768px）まで
+// スマホ → iPadより小さい（767px）からiPhone SE（320px）まで
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+
+//中央配置
+@mixin center-poji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+@mixin center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// photoshopのフォント決め用
+//例：TT16px(左)　AA24px(右)　VA75(右下)
+@mixin font ($size, $line-height, $letter-spacing) {
+    font-size: ($size/10) + rem;
+    line-height: $line-height / $size;
+    letter-spacing: ($letter-spacing / 1000) + em;
+}
+
+
+
+//文字リンク
+@mixin link-color($color-normal, $color-hover) {
+  color: $normal;
+  &:hover {
+    color:$hover;
+    text-decoration: none;
+  }
+}
+//z-index
+  $layer: (
+    modal      : 100,
+    header     : 20,
+    tooltip    : 10,
+    default    : 1
+  );
+@mixin z-index($key) {
+  z-index: map-get($layer, $key);
+}
+
+
+
+
+//必要？
+@mixin width($width) {
+    max-width: $width;
+    width: $width / 1366px * 100vw ;
+    min-width: $width / 1366px * 500px;
+}
+@mixin height($height) {
+    max-height: $height;
+    height: $height / 1366px * 100vw;
+    min-height: $height / 1366px * 500px;
+}
+@mixin line-height($line-height) {
+    @include mq('max') {
+        line-height: $line-height;
+    }
+    line-height: $line-height / 1366px *  100vw;
+    @include mq('sp') {
+        line-height: $line-height / 1366px * 500px;
+    }
+}
+@mixin font-size($size) {
+    @include mq('max') {
+        font-size: $size ;
+    }
+    font-size: $size / 1366px *  100vw;
+    @include mq('sp') {
+        font-size: $size / 1366px * 500px;
+    }
+}
+@mixin m-top($topsize) {
+    @include mq('max') {
+        margin-top: $topsize;
+    }
+    margin-top: $topsize / 1366px *  100vw;
+    @include mq('sp') {
+        margin-top: $topsize / 1366px * 500px;
+    }
+}
+@mixin m-bottom($bottomsize) {
+    @include mq('max') {
+        margin-bottom: $bottomsize;
+    }
+    margin-bottom: $bottomsize / 1366px *  100vw;
+    @include mq('sp') {
+        margin-bottom: $bottomsize / 1366px * 500px;
+    }
+}
+@mixin m-left($leftsize) {
+    @include mq('max') {
+        margin-left: $leftsize;
+    }
+    margin-left: $leftsize / 1366px *  100vw;
+    @include mq('sp') {
+        margin-left: $leftsize / 1366px * 500px;
+    }
+}
+@mixin m-right($rightsize) {
+    @include mq('max') {
+        margin-right: $rightsize;
+    }
+    margin-right: $rightsize / 1366px *  100vw;
+    @include mq('sp') {
+        margin-right: $rightsize / 1366px * 500px;
+    }
+}
+@mixin p-top($p-top) {
+    @include mq('max') {
+        padding-top: $p-top;
+    }
+    padding-top: $p-top / 1366px *  100vw;
+    @include mq('sp') {
+        padding-top: $p-top / 1366px * 500px;
+    }
+}
+@mixin p-left($p-left) {
+    @include mq('max') {
+        padding-left: $p-left;
+    }
+    padding-left: $p-left / 1366px *  100vw;
+    @include mq('sp') {
+        padding-left: $p-left / 1366px * 500px;
+    }
+}
+@mixin p-right($p-right) {
+    @include mq('max') {
+        padding-right: $p-right;
+    }
+    padding-right: $p-right / 1366px *  100vw;
+    @include mq('sp') {
+        padding-right: $p-right / 1366px * 500px;
+    }
+}
+@mixin p-bottom($p-bottom) {
+    @include mq('max') {
+        padding-bottom: $p-bottom;
+    }
+    padding-bottom: $p-bottom / 1366px *  100vw;
+    @include mq('sp') {
+        padding-bottom: $p-bottom / 1366px * 500px;
+    }
+}
+
