@@ -74,6 +74,29 @@
     font-weight: bold;
 }
 
+//フォントボリュームの切り替え
+.font-volume {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    li {
+        position: relative;
+        margin-right: 20px;
+        padding: 5px;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        i {
+            @include center-poji;
+        }
+    }
+    .active {
+        background-color: #0eda4b;
+        border-radius: 50%;
+        transform: scale(1.5, 1.5);
+    } 
+}
+
 /* 問題文と回答後の結果（デザインは使いまわし） */
 .quiz_area .quiz_question, .quiz_result, .quiz_percent {
     box-sizing: border-box;
@@ -107,11 +130,13 @@
         width: 100%;
         padding: 10px 15px;
         @include mq("sp") {
-            padding: 5px 10px;
+            padding: 3px 10px;
         }
         border: 2px solid rgb(20, 219, 226);
         margin: 0 0 2px 0;
-        cursor: pointer;
+        i {
+            cursor: pointer;
+        }
     }
 }
 
@@ -128,11 +153,10 @@
     p {
         height: 320px;
         @include mq("sp") {
-            height: 250px;
+            height: 220px;
         }
         object-fit: cover;
         object-position: 50% 40%;
-        // transform: scale(1, -1);
         margin: 0 auto;
         img {
             box-shadow: 0 0 8px gray;

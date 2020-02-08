@@ -484,6 +484,36 @@ select:focus {
   font-weight: bold;
 }
 
+.font-volume {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+}
+
+.font-volume li {
+  position: relative;
+  margin-right: 20px;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.font-volume li i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.font-volume .active {
+  background-color: #0eda4b;
+  border-radius: 50%;
+  -webkit-transform: scale(1.5, 1.5);
+          transform: scale(1.5, 1.5);
+}
+
 /* 問題文と回答後の結果（デザインは使いまわし） */
 .quiz_area .quiz_question, .quiz_result, .quiz_percent {
   -webkit-box-sizing: border-box;
@@ -523,13 +553,16 @@ select:focus {
   padding: 10px 15px;
   border: 2px solid #14dbe2;
   margin: 0 0 2px 0;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
   .quiz_area .quiz_ans_area ul li {
-    padding: 5px 10px;
+    padding: 3px 10px;
   }
+}
+
+.quiz_area .quiz_ans_area ul li i {
+  cursor: pointer;
 }
 
 .quiz_area .quiz_ans_area ul li.selected {
@@ -555,7 +588,7 @@ select:focus {
 
 @media screen and (max-width: 767px) {
   .quiz_question p {
-    height: 250px;
+    height: 220px;
   }
 }
 

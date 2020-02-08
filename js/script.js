@@ -55,7 +55,7 @@ $(function() {
 
             // 再生可能になったら実行する関数を登録
             audio.addEventListener("canplaythrough", function() {
-                canPlay = true;
+                // canPlay = true;
                 console.log("Can Play!");
             });
             audio.src = trueaudio + ext;
@@ -66,8 +66,8 @@ $(function() {
         audio.currentTime = 0;
         audio.play();
     };
-    trueEvents();
-    //falseの場合
+    // trueEvents();
+    // //falseの場合
     let falseEvents = function() {
         try {
             // 使用可能なファイル形式の判定、拡張子を得る
@@ -77,20 +77,35 @@ $(function() {
 
             // 再生可能になったら実行する関数を登録
             audio.addEventListener("canplaythrough", function() {
-                canPlay = true;
+                // canPlay = true;
                 console.log("Can Play!");
             });
             audio.src = falseaudio + ext;
         } catch(e) {
             console.log(e);
-        }
+        } 
         if (! canPlay) return;
         audio.currentTime = 0;
         audio.play();
     };
-    falseEvents();
+
+    // falseEvents();
     //音声設定ここまで
     
+    //音再生のon off切り替え
+    $('.quiz_area').on('click', '.font-volume li', function() {
+        $('.font-volume li').toggleClass('active');
+    });
+    
+    //onの場合、再生出来るようにする
+    $('.quiz_area').on('click', '#volume-on', function() {
+        canPlay = true;
+    });
+    //offの場合再生出来ないようにする
+    $('.quiz_area').on('click', '#volume-off', function() {
+        canPlay = false;
+    });
+
     //回答を選択した後の処理
     quizArea.on('click', '.quiz_ans_area ul li', function() {
         //画面を暗くするボックスを表示（上から重ねて、結果表示中は選択肢のクリックやタップを封じる
@@ -137,7 +152,7 @@ $(function() {
         quizArea.html(quiz_html); //表示を元に戻す
         quiz_cnt = 0;
         quiz_success_cnt = 0;
-        //aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフルしたい場合はここのコメントを消してね
+        aryQuiz = arrShuffle(aryQuiz); //毎回出題の順番をシャッフル
         quizShow();
     }
     
@@ -176,7 +191,6 @@ $(function() {
         }
         text1 += '<br><input type="button" value="もう一度挑戦する" class="quiz_restart p-10">';
         quizArea.find('.quiz_result').html(text1);
-        // quizArea.find('.quiz_result').prepend(text1);
         quizArea.find('.quiz_result').show();
     }
     
