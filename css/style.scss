@@ -79,21 +79,24 @@
     display: inline-block;
     position: absolute;
     right: 20px;
+    z-index: 99;
     li {
         position: relative;
-        margin-right: 20px;
+        margin-right: 35px;
         padding: 5px;
         width: 15px;
         height: 15px;
         cursor: pointer;
         i {
             @include center-poji;
+            cursor: pointer;
         }
     }
     .active {
         background-color: #0eda4b;
         border-radius: 50%;
         transform: scale(1.5, 1.5);
+        cursor: pointer;
     } 
 }
 

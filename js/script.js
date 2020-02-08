@@ -1,4 +1,9 @@
 $(function() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+    AudioContext;
+    audioCtx;
+    
     let quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
     let quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
     let quiz_cnt = 0; //現在の問題数を管理
@@ -93,16 +98,20 @@ $(function() {
     //音声設定ここまで
     
     //音再生のon off切り替え
-    $('.quiz_area').on('click', '.font-volume li', function() {
-        $('.font-volume li').toggleClass('active');
+    quizArea.on('click', '.font-volume li', function() {
+        // クリックされたタブの順番を変数に格納
+        const index = $('.font-volume li').index(this);
+        // クリック済みタブのデザインを設定したcssのクラスを一旦削除
+        $('.font-volume li').removeClass('active');
+        // クリックされたタブにクリック済みデザインを適用する
+        $(this).addClass('active');
     });
-    
     //onの場合、再生出来るようにする
-    $('.quiz_area').on('click', '#volume-on', function() {
+    quizArea.on('click', '#volume-on', function() {
         canPlay = true;
     });
     //offの場合再生出来ないようにする
-    $('.quiz_area').on('click', '#volume-off', function() {
+    quizArea.on('click', '#volume-off', function() {
         canPlay = false;
     });
 
@@ -145,6 +154,7 @@ $(function() {
     //もう一度挑戦するを押した時の処理
     quizArea.on('click', '.quiz_restart', function(){
         quizReset();
+        canPlay = false;
     });
     
     //リセットを行う関数
