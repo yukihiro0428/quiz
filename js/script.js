@@ -1,18 +1,18 @@
 $(function() {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioCtx = new AudioContext();
-    AudioContext;
-    audioCtx;
+    // var AudioContext = window.AudioContext || window.webkitAudioContext;
+    // var audioCtx = new AudioContext();
+    // AudioContext;
+    // audioCtx;
     
-    let quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
-    let quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
-    let quiz_cnt = 0; //現在の問題数を管理
-    let quiz_fin_cnt = 5; //何問で終了か設定（クイズ数以下であること）
-    let quiz_success_cnt = 0; //問題の正解数
+    var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
+    var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
+    var quiz_cnt = 0; //現在の問題数を管理
+    var quiz_fin_cnt = 5; //何問で終了か設定（クイズ数以下であること）
+    var quiz_success_cnt = 0; //問題の正解数
     
     //クイズの配列を設定
     //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
-    let aryQuiz = [];
+    var aryQuiz = [];
     aryQuiz.push (
         {
             question : 'この動物はな～に？',
@@ -45,16 +45,16 @@ $(function() {
     
     //音声の設定
     // 変数の初期化
-	const audio = new Audio("");	// Audio
-    const trueaudio = "sound/true.";	// 音声パス（拡張子なし）
-    const falseaudio = "sound/false.";  // 音声パス（拡張子なし）
-    let canPlay = false;
+    var audio = new Audio();	// Audio
+    var trueaudio = "sound/true.";	// 音声パス（拡張子なし）
+    var falseaudio = "sound/false.";  // 音声パス（拡張子なし）
+    var canPlay = false;
 
     //trueの場合
-    let trueEvents = function() {
+    var trueEvents = function() {
         try {
             // 使用可能なファイル形式の判定、拡張子を得る
-            let ext = null;
+            var ext = null;
             if      (audio.canPlayType("audio/ogg") == "maybe") {ext = "ogg";}
             else if (audio.canPlayType("audio/mp3") == "maybe") {ext = "mp3";}
 
@@ -68,15 +68,16 @@ $(function() {
             console.log(e);
         }
         if (! canPlay) return;
+        // var audio = new Audio();
         audio.currentTime = 0;
         audio.play();
     };
-    // trueEvents();
+    
     // //falseの場合
-    let falseEvents = function() {
+    var falseEvents = function() {
         try {
             // 使用可能なファイル形式の判定、拡張子を得る
-            let ext = null;
+            var ext = null;
             if      (audio.canPlayType("audio/ogg") == "maybe") {ext = "ogg";}
             else if (audio.canPlayType("audio/mp3") == "maybe") {ext = "mp3";}
 
@@ -94,13 +95,13 @@ $(function() {
         audio.play();
     };
 
-    // falseEvents();
+    
     //音声設定ここまで
     
     //音再生のon off切り替え
     quizArea.on('click', '.font-volume li', function() {
         // クリックされたタブの順番を変数に格納
-        const index = $('.font-volume li').index(this);
+        var index = $('.font-volume li').index(this);
         // クリック済みタブのデザインを設定したcssのクラスを一旦削除
         $('.font-volume li').removeClass('active');
         // クリックされたタブにクリック済みデザインを適用する
@@ -174,14 +175,14 @@ $(function() {
         quizArea.find('.quiz_question').text(aryQuiz[quiz_cnt]['question']);
         quizArea.find('.quiz_question').append(aryQuiz[quiz_cnt]['img']);
         //正解の回答を取得する
-        let success = aryQuiz[quiz_cnt]['answer'][0];
+        var success = aryQuiz[quiz_cnt]['answer'][0];
         //現在の選択肢表示を削除する
         quizArea.find('.quiz_ans_area ul').empty();
         //問題文の選択肢をシャッフルさせる(自作関数) .concat()は参照渡し対策
-        let aryHoge = arrShuffle(aryQuiz[quiz_cnt]['answer'].concat());
+        var aryHoge = arrShuffle(aryQuiz[quiz_cnt]['answer'].concat());
         //問題文の配列を繰り返し表示する
         $.each(aryHoge, function(key, value){
-            let fuga = '<li>' + value + '</li>';
+            var fuga = '<li>' + value + '</li>';
             //正解の場合はdata属性を付与する
             if(success === value){
                 fuga = '<li data-true="1">' + value + '</li>';
@@ -193,9 +194,9 @@ $(function() {
     //結果を表示する関数
     function quizResult(){
         quizArea.find('.quiz_set').hide();
-        let text = quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！';
-        let persent = Math.floor(quiz_success_cnt / quiz_fin_cnt * 100); //正解率
-        let text1 = '正解率は' + persent + '%でした！';
+        var text = quiz_fin_cnt + '問中' + quiz_success_cnt + '問正解！';
+        var persent = Math.floor(quiz_success_cnt / quiz_fin_cnt * 100); //正解率
+        var text1 = '正解率は' + persent + '%でした！';
         if(quiz_fin_cnt === quiz_success_cnt){
             text1 += '<br>全問正解おめでとう！';
         }
@@ -207,8 +208,8 @@ $(function() {
     //配列をシャッフルする関数
     function arrShuffle(arr){
         for(i = arr.length - 1; i > 0; i--){
-            let j = Math.floor(Math.random() * (i + 1));
-            let tmp = arr[i];
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i];
             arr[i] = arr[j];
             arr[j] = tmp;
         }
