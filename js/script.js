@@ -6,7 +6,7 @@ $(function() {
     var quiz_success_cnt = 0; //問題の正解数
     
     //クイズの配列を設定
-    //answerの選択肢の数はいくつでもOK ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
+    //先頭を正解とする(出題時に選択肢はシャッフルされる)
     var aryQuiz = [];
     aryQuiz.push (
         {
@@ -39,7 +39,6 @@ $(function() {
     quizReset();
     
     //音声の設定
-    // 変数の初期化
     var audio = new Audio();	// Audio
     var trueaudio = "sound/true.";	// 音声パス（拡張子なし）
     var falseaudio = "sound/false.";  // 音声パス（拡張子なし）
@@ -63,7 +62,6 @@ $(function() {
             console.log(e);
         }
         if (! canPlay) return;
-        // var audio = new Audio();
         audio.currentTime = 0;
         audio.play();
     };
@@ -122,7 +120,7 @@ $(function() {
             quiz_success_cnt++;
             //正解音を鳴らす
             trueEvents();
-        }else{
+        } else {
             //不正解の処理
             quizArea.find('.quiz_area_icon').addClass('false');
             //不正解音を鳴らす
