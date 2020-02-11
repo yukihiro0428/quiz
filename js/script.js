@@ -1,17 +1,12 @@
 $(function() {
-    // var AudioContext = window.AudioContext || window.webkitAudioContext;
-    // var audioCtx = new AudioContext();
-    // AudioContext;
-    // audioCtx;
-    
     var quizArea = $('.quiz_area'); //クイズを管理するDOMを指定
-    var quiz_html = quizArea.html(); //もう一度　を押した時に元に戻すため初期HTMLを変数で保管
+    var quiz_html = quizArea.html(); //もう一度押した時に元に戻すため初期HTMLを変数で保管
     var quiz_cnt = 0; //現在の問題数を管理
     var quiz_fin_cnt = 5; //何問で終了か設定（クイズ数以下であること）
     var quiz_success_cnt = 0; //問題の正解数
     
     //クイズの配列を設定
-    //answerの選択肢の数はいくつでもOK　ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
+    //answerの選択肢の数はいくつでもOK ただし先頭を正解とすること(出題時に選択肢はシャッフルされる)
     var aryQuiz = [];
     aryQuiz.push (
         {
