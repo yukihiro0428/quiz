@@ -74,14 +74,15 @@
     font-weight: bold;
 }
 
-//フォントボリュームの切り替え
+// フォントボリュームの切り替え
 .font-volume {
     display: inline-block;
     position: absolute;
     right: 20px;
-    z-index: 99;
+    cursor: pointer;
     a {
         background: #000;
+        cursor: pointer;
     }
     li {
         position: relative;
@@ -101,6 +102,16 @@
         transform: scale(1.5, 1.5);
         cursor: pointer;
     } 
+}
+
+#target {
+    text-align: center;
+    font-size: 2em;
+    color: #028760;
+    font-weight: bold;
+}
+#btn_center {
+    text-align: center;
 }
 
 /* 問題文と回答後の結果（デザインは使いまわし） */
@@ -136,7 +147,7 @@
         width: 100%;
         padding: 10px 15px;
         @include mq("sp") {
-            padding: 3px 10px;
+            padding: 5px 10px;
         }
         border: 2px solid rgb(20, 219, 226);
         margin: 0 0 2px 0;

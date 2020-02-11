@@ -31,13 +31,13 @@ $(function() {
         }
         ,{
             question : 'この動物はな～に？',
-            img: '<p><img src="img/IMG_0294-min.JPG" alt="問題文の写真"></p>',
-            answer : ['フラミンゴ', 'ダチョウ', 'アヒル', 'コイ']//フラミンゴ
+            img: '<p><img src="img/IMG_0309-min.JPG" alt="問題文の写真"></p>',
+            answer : ['クマ', 'タヌキ', 'パンダ', 'ナマケモノ']//クマ
         }
         ,{
             question : 'この動物はな～に？',
-            img: '<p><img src="img/IMG_0304-min.JPG" alt="問題文の写真"></p>',
-            answer : ['カメ', 'コイ', 'ワニ', 'トカゲ']//カメ
+            img: '<p><img src="img/IMG_0312-min.JPG" alt="問題文の写真"></p>',
+            answer : ['チーター', 'ヒョウ', 'ジャガー', 'ピューマ']//チーター
         }
     );
     
@@ -95,9 +95,6 @@ $(function() {
         audio.play();
     };
 
-    
-    //音声設定ここまで
-    
     //音再生のon off切り替え
     quizArea.on('click', '.font-volume li', function() {
         // クリックされたタブの順番を変数に格納
@@ -107,6 +104,7 @@ $(function() {
         // クリックされたタブにクリック済みデザインを適用する
         $(this).addClass('active');
     });
+    
     //onの場合、再生出来るようにする
     quizArea.on('click', '#volume-on', function() {
         canPlay = true;
